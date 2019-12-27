@@ -26,7 +26,7 @@ public class DomainService {
         if(jsonObject.get("code").getAsString().contains("OK")) {
             JsonArray websites = jsonObject.getAsJsonArray("websites");
 
-            for(int i = 0; i < domains.size(); i++) {
+            for(int i = 0; i < websites.size(); i++) {
                 JsonObject website = websites.get(i).getAsJsonObject();
 
                 Domain domain = Domain.builder()
