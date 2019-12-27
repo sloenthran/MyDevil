@@ -19,13 +19,13 @@ import java.util.List;
 @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 @AllArgsConstructor
 public class MailController {
-    private MailService mailService;
-    private MailMapper mailMapper;
+    private MailService service;
+    private MailMapper mapper;
 
-    @GetMapping("mails")
+    @GetMapping("/mails")
     @Cacheable("controller_mails")
     public List<MailDto> getMails() {
-        List<Mail> mails = mailService.getMails();
-        return mailMapper.mapListMailToListMailDto(mails);
+        List<Mail> mails = service.getMails();
+        return mapper.mapListMailToListMailDto(mails);
     }
 }

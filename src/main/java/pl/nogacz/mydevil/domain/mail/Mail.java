@@ -12,7 +12,7 @@ import java.util.List;
 @Builder
 public class Mail implements Serializable {
     private String domain;
-    private boolean dkimStatus;
+    private boolean dkimEnabled;
 
     @Builder.Default
     private List<Mailbox> mailboxes = new ArrayList<>();

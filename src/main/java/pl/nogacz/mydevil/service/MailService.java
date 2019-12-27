@@ -3,8 +3,6 @@ package pl.nogacz.mydevil.service;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import pl.nogacz.mydevil.domain.mail.Alias;
@@ -14,12 +12,9 @@ import pl.nogacz.mydevil.util.socket.MyDevilSocket;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 @Service
 public class MailService {
-    private static Logger LOGGER = LoggerFactory.getLogger(MailService.class);
-
     private MyDevilSocket socket = MyDevilSocket.getInstance();
     private Gson gson = new Gson();
 
@@ -43,7 +38,7 @@ public class MailService {
 
                 Mail mail = Mail.builder()
                         .domain(domain.get("domain").getAsString())
-                        .dkimStatus(domain.get("dkim_key").getAsBoolean())
+                        .dkimEnabled(domain.get("dkim_key").getAsBoolean())
                         .build();
 
                 mails.add(mail);

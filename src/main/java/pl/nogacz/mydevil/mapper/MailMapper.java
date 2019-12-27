@@ -16,7 +16,7 @@ public class MailMapper {
     public MailDto mapMailToMailDto(final Mail mail) {
         return MailDto.builder()
                 .domain(mail.getDomain())
-                .dkimStatus(mail.isDkimStatus())
+                .dkimStatus(mail.isDkimEnabled())
                 .mailboxes(
                         mapListMailboxToListMailboxDto(mail.getMailboxes())
                 )
