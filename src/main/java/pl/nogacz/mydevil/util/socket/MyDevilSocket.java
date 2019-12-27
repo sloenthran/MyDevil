@@ -12,14 +12,12 @@ public class MyDevilSocket {
     private static MyDevilSocket instance = null;
 
     public static MyDevilSocket getInstance() {
-        if(instance == null) {
-            synchronized(MyDevilSocket.class) {
-                if(instance == null) {
-                    try {
-                        instance = new MyDevilSocket();
-                    } catch(IOException e) {
-                        LOGGER.error(e.getMessage());
-                    }
+        synchronized(MyDevilSocket.class) {
+            if(instance == null) {
+                try {
+                    instance = new MyDevilSocket();
+                } catch(IOException e) {
+                    LOGGER.error(e.getMessage());
                 }
             }
         }
